@@ -8,8 +8,8 @@ init(autoreset=True)
 
 main_api = "https://www.mapquestapi.com/directions/v2/route?"
 key = "7RaN1Tvl9VzAd4dUGM6WHVH9mp3go3Q2"
-fuel_efficiency = 10  # Example fuel efficiency in liters per kilometer
-average_speed = 60  # Example average speed in kilometers per hour
+fuel_efficiency = 10  
+average_speed = 60  
 
 while True:
     orig = input("Starting Location: ")
@@ -67,15 +67,6 @@ while True:
 
         print(tabulate(directions_table, headers=["Direction", "Distance"], tablefmt="fancy_grid"))
         print("=============================================\n")
-
-        # Display alternative routes
-        if "route" in json_data and "alternateRoutes" in json_data["route"]:
-            print("Alternative Routes:")
-            for i, route in enumerate(json_data["route"]["alternateRoutes"], start=1):
-                print(f"Route {i}:")
-                print(f"   Duration: {route['formattedTime']}")
-                print(f"   Distance: {route['distance']:.2f} {fuel_unit}")
-                print("=============================================")
 
     elif json_status == 402:
         print(Fore.RED + "**********************************************")
